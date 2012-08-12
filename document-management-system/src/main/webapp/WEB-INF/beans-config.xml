@@ -12,4 +12,8 @@
 
 	<bean id="loginController" class="com.bharat.dms.web.LoginController" />
 
+	<bean id="documentService" class="com.bharat.dms.service.DocumentService"/>
+	
+	<bean id="documentDao" class="com.bharat.dms.dao.DocumentDaoImpl"/>
+	
 </beans>

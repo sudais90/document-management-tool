@@ -24,7 +24,16 @@
 	<definition name="login" extends="template">
 		<put-attribute name="title" value="Home" />
 		<put-attribute name="content" value="/WEB-INF/pages/loginPage.jsp" />
-		<put-attribute name="rightBar" value="/WEB-INF/pages/loginPage.jsp"/>
+	</definition>
+	
+	<definition name="uploadForm" extends="template">
+		<put-attribute name="title" value="Upload" />
+		<put-attribute name="content" value="/WEB-INF/pages/documentUploadForm.jsp" />
+	</definition>
+	
+	<definition name="listDocs" extends="template">
+		<put-attribute name="title" value="Latest Documents" />
+		<put-attribute name="content" value="/WEB-INF/pages/listDocuments.jsp" />
 	</definition>
 
 </tiles-definitions>

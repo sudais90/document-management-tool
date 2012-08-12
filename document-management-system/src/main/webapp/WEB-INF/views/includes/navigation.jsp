@@ -5,13 +5,52 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 
 <%@ taglib prefix="security"
-uri="http://www.springframework.org/security/tags" %>
+	uri="http://www.springframework.org/security/tags"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<style type="text/css">
+
+.leftNavTabs {
+	width: 100%;
+	font-size: 12px;
+	color: #FFFFFF;
+}
+
+.leftNavTabs td a{
+	width: 100%;
+	font-size: 12px;
+	display: block;
+	color:white;
+	background-color: grey;
+	height: 20px;
+	text-align: left;
+	vertical-align: middle;
+	text-decoration: none;
+}
+
+.leftNavTabs td a:HOVER{
+	color: white;
+}
+
+</style>
+
 </head>
 <body>
-left navigation tabs;
+
+<table class="leftNavTabs" border="1" >
+	<tr>
+		<td><s:url value="/upload" var="newdoc" /> <a href="${newdoc}">Upload
+		New Document</a></td>
+	</tr>
+	<tr>
+		<td><s:url value="/docs" var="listdocs" /> <a href="${listdocs}">Documents</a></td>
+	</tr>
+	<tr>
+		<td></td>
+	</tr>
+</table>
+
 </body>
 </html>
