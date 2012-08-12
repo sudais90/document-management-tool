@@ -66,3 +66,18 @@ BODY {
 	font-size: 12px;
 	color: 
 }
+
+FORM INPUT,TEXTAREA {
+	width: 423px;
+}
+
+.message {
+	padding-top: 15px;
+	padding-left:10px;
+	width: 99%;
+	height: 40px;
+	vertical-align: middle;
+	color: #FFFFFF;
+	background-color: #FF704D;
+	font-weight: bold;
+}

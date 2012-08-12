@@ -28,6 +28,7 @@ public class Metadata {
 	private Date createdDate;
 	private Date updatedDate;
 	private String documentType;
+	private Long documentSize;
 	private Document document;
 
 	public Metadata() {
@@ -135,6 +136,15 @@ public class Metadata {
 	
 	public void setDocumentType(String documentType) {
 		this.documentType = documentType;
+	}
+	
+	@Column(name = "SIZE")
+	public Long getDocumentSize() {
+		return documentSize;
+	}
+	
+	public void setDocumentSize(Long documentSize) {
+		this.documentSize = documentSize;
 	}
 	
 	@OneToOne(cascade = CascadeType.ALL)

@@ -33,7 +33,7 @@ public class Document {
 		this.documentId = documentId;
 	}
 	
-	@Column(name = "DOCUMENT")
+	@Column(name = "DOCUMENT", columnDefinition = "LONGBLOB")
 	public byte[] getDocument() {
 		return document;
 	}
