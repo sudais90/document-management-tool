@@ -64,7 +64,11 @@ BODY {
 	background-color: #E6E4E5;
 	font-family: verdana, arial, sans-serif;
 	font-size: 12px;
-	color: 
+}
+
+TABLE,TR,TD {
+	font-family: verdana, arial, sans-serif;
+	font-size: 12px;
 }
 
 FORM INPUT,TEXTAREA {
@@ -73,11 +77,19 @@ FORM INPUT,TEXTAREA {
 
 .message {
 	padding-top: 15px;
-	padding-left:10px;
+	padding-left: 10px;
 	width: 99%;
 	height: 40px;
 	vertical-align: middle;
 	color: #FFFFFF;
 	background-color: #FF704D;
 	font-weight: bold;
+}
+
+.odd {
+	background-color: #DADADA;
+}
+
+.even {
+	background-color: #F2F2F2;
 }

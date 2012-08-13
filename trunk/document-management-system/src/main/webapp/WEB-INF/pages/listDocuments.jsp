@@ -18,9 +18,9 @@
 <body>
 <div class="message">${msg}</div>
 <br />
-
 <table style="width: 100%;font-size: 12px;" border="0">
 	<tr style="font-weight: bold;">
+		<td width="25">Sr.No.</td>
 		<td width="25">&nbsp;</td>
 		<td>Document</td>
 		<td width="125">Created Date</td>
@@ -29,26 +29,51 @@
 	</tr>
 
 	<c:forEach items="${lst}" var="item" varStatus="status">
-		<c:if test="${item.documentType eq 'application/msword'}">
-			<s:url value="/assets/images/word-icon.png" var="icon" />
-		</c:if>
-		<c:if test="${item.documentType eq 'application/pdf'}">
-			<s:url value="/assets/images/pdf-icon.png" var="icon" />
-		</c:if>
-		<c:if test="${item.documentType eq 'text/plain'}">
-			<s:url value="/assets/images/text-icon.png" var="icon" />
-		</c:if>
-		<c:if test="${item.documentType eq 'application/vnd.ms-excel'}">
-			<s:url value="/assets/images/excel-icon.png" var="icon" />
-		</c:if>
+	
+		<c:choose>
+			<c:when test="${item.documentType eq 'application/msword' 
+			or item.documentType eq 'application/vnd.ms-word.document.12'}">
+				<s:url value="/assets/images/word-icon.png" var="icon" />	
+			</c:when>
+			<c:when test="${item.documentType eq 'application/pdf'}">
+				<s:url value="/assets/images/pdf-icon.png" var="icon" />
+			</c:when>
+			<c:when test="${item.documentType eq 'text/plain'}">
+				<s:url value="/assets/images/text-icon.png" var="icon" />
+			</c:when>
+			<c:when test="${item.documentType eq 'application/vnd.ms-excel'
+			or item.documentType eq 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}">
+				<s:url value="/assets/images/excel-icon.png" var="icon" />			
+			</c:when>
+			<c:when test="${item.documentType eq 'text/html'}">
+				<s:url value="/assets/images/ie-icon.png" var="icon" />	
+			</c:when>
+			<c:when test="${item.documentType eq 'application/zip'}">
+				<s:url value="/assets/images/zip-icon.png" var="icon" />	
+			</c:when>
+			<c:when test="${item.documentType eq 'application/octet-stream'}">
+				<s:url value="/assets/images/rar-icon.png" var="icon" />	
+			</c:when>
+		</c:choose>
 
-		<tr>
+		<c:choose>
+			<c:when test="${(status.count mod 2 ) eq 0}">
+				<c:set var="className" value="even" scope="page" />	
+			</c:when>
+			<c:when test="${(status.count mod 2 ) ne 0}">
+				<c:set var="className" value="odd" scope="page" />	
+			</c:when>
+			
+		</c:choose>
+		<tr class="${className}">
+			<td width="25">${status.count}</td>
 			<td width="25">
 			<div
 				style="width: 25px; height: 25px; float: left; margin-right: 10px;"><img
 				src="${icon}" /></div>
 			</td>
-			<td><a href="<s:url value="/download/${item.metadataId}"/>">${item.documentFileName}</a></td>
+			<td title="Click link to download Document">
+						<a href="<s:url value="/download/${item.metadataId}"/>">${item.documentFileName}</a></td>
 			<td width="125"><fmt:formatDate value="${item.createdDate}" /></td>
 			<td width="125">
 				<c:if test="${updatedDate eq null}">
