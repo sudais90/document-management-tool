@@ -15,7 +15,7 @@
 			<t:insertAttribute name="top" />
 			<!--<co id="co_tile_top" />-->
 		</div>
-		<div id="topTabs"><t:insertAttribute name="topTabs"/></div>
+		<div class="topTabs"><t:insertAttribute name="topTabs"/></div>
 		<div class="content-container">
 			<div class="side">
 				<t:insertAttribute name="side" />
@@ -25,6 +25,7 @@
 				<t:insertAttribute name="content" />
 				<!--<co id="co_tile_content" />-->
 			</div>
+			<div style="clear:both"></div>
 		</div>
 		<div class="page-footer">
 			<t:insertAttribute name="footer" />

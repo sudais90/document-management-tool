@@ -9,16 +9,14 @@
 	background-color: #9170B0;
 }
 
-#topTabs {
+.topTabs {
 	width: 100%;
-	heigh: 40px;
-	background-color: white;
+	height: 40px;
+	background-color: #9170B0;
 }
 
 .content-container {
 	width: 100%;
-	min-height: 400px;
-	height: auto;
 	background-color: #FFFFFF;
 }
 

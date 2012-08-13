@@ -9,6 +9,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 </head>
 <body>
-top tabs.
+<form method="GET" action="search">
+<table style="width: 550px; height: 38px; float: right" border="0"
+	bordercolor="white">
+	<tr>
+		<td>Search</td>
+		<td><input type="text" name="q" style="width: 420px;"/></td>
+		<td><input type="submit" value="search" style="width:100px;"></td>
+	</tr>
+</table>
+</form>
 </body>
 </html>

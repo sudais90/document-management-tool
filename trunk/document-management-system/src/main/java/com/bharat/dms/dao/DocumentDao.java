@@ -12,4 +12,6 @@ public interface DocumentDao {
 	public List<Metadata> getDocuments(int count);
 	
 	public Metadata getDocumentById(Long docId);
+	
+	public List<Metadata> getDocumentsBySearchQuery(String searchQuery);
 }

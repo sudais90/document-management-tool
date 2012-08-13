@@ -77,4 +77,12 @@ public class DocumentService {
 		
 		return meta;
 	}
+	
+	
+	public List<Metadata> getDocumentsBySearchQuery(String searchQuery) {
+		List<Metadata> lst = new ArrayList<Metadata>();
+		
+		lst = documentDao.getDocumentsBySearchQuery(searchQuery);
+		return lst;
+	}
 }
