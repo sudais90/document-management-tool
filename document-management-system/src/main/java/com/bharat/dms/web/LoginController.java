@@ -50,4 +50,9 @@ public class LoginController implements AuthenticationSuccessHandler,
 		// TODO Auto-generated method stub
 
 	}
+	
+	@RequestMapping(value = "/disclaimer")
+	public String showDisclaimer(){
+		return "disclaimer";
+	}
 }

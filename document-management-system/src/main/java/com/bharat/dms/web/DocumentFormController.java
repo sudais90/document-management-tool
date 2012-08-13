@@ -52,8 +52,7 @@ public class DocumentFormController {
 		log.info(">>>>>>>>>> " + document);
 		log.info(">>>>>>>>>> " + formBean);
 		log.info(">>>>>>>>>> " + bindingResult);
-		log.info(">>>>>>>>>> e : " + bindingResult.hasErrors());
-		log.info(">>>>>>>>>> e : " + (bindingResult.hasErrors() || document.isEmpty()));
+		
 
 		ModelAndView mav = new ModelAndView();
 

@@ -7,7 +7,7 @@ import com.bharat.dms.domain.Category;
 public class DocumentPostFormBean {
 
 	private String subject;
-	private int category;
+	private Integer category;
 	private String keywords;
 	private String comments;
 	
@@ -23,11 +23,11 @@ public class DocumentPostFormBean {
 		this.subject = subject;
 	}
 
-	public int getCategory() {
+	public Integer getCategory() {
 		return category;
 	}
 
-	public void setCategory(int category) {
+	public void setCategory(Integer category) {
 		this.category = category;
 	}
 
