@@ -9,14 +9,15 @@
 	uri="http://www.springframework.org/security/tags"%>
 
 <div class="footer">
-<table style="text-align: center; margin-left: auto; margin-right: auto;">
+<table
+	style="text-align: center; margin-left: auto; margin-right: auto;">
 	<tr>
-		<td><span
-	class="copyright">Developer:&nbsp; <a href="mailto:ibharatsharma@gmail.com">ibharatsharma@gmail.com</a>
-<span></td>
+		<td>Developer:&nbsp; <a href="mailto:ibharatsharma@gmail.com">ibharatsharma@gmail.com</a>
+		</td>
 	</tr>
 	<tr>
 		<td><a href="<s:url value="disclaimer"/>">Disclaimer
 		Agreement</a></td>
 	</tr>
-</table></div>
+</table>
+</div>

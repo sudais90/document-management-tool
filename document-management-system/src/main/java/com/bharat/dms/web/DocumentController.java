@@ -27,8 +27,12 @@ public class DocumentController {
 		this.documentService = documentService;
 	}
 
+	/**
+	 * prepares document post form 
+	 * @return
+	 */
 	@RequestMapping(value = "/docs", method = RequestMethod.GET)
-	public ModelAndView prepareDocumentPostForm() {
+	public ModelAndView listDocuments() {
 		String msg = "Recent Documents";
 
 		List<Metadata> lst = documentService.getRecentDocuments();
@@ -41,6 +45,13 @@ public class DocumentController {
 		return mav;
 	}
 
+	/**
+	 * download document.
+	 * 
+	 * @param docId
+	 * @param request
+	 * @param response
+	 */
 	@RequestMapping(value = "/download/{id}", method = RequestMethod.GET)
 	public void downloadDocumentById(@PathVariable(value = "id") Long docId,
 			HttpServletRequest request, HttpServletResponse response ) {
