@@ -15,7 +15,28 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <SCRIPT type="text/javascript">
 function confirmDelete(id){
-	alert("Feature not implemented yet : " + id);
+	var action = confirm("Do you really want to delete "+ document.getElementById(id).innerHTML +" ?");
+
+	var url = '<s:url value="/docs/delete"/>';
+	if(action)
+	{
+		var method = method || "post";
+		var form = document.createElement("form");
+		form.setAttribute("method", method);
+		form.setAttribute("action", url);
+		// alert("3333333");
+		
+		var c = document.createElement("input");
+		c.type = "text";
+		c.setAttribute("name", "id");
+		c.setAttribute("value", id);
+		form.appendChild(c);
+		// alert("22222222");
+
+		document.body.appendChild(form);
+	    form.submit();
+	    // alert("111111");
+ 	}
 }
 
 </SCRIPT>
@@ -86,7 +107,7 @@ function confirmDelete(id){
 				style="width: 25px; height: 25px; float: left; margin-right: 10px;"><img
 				src="${icon}" /></div>
 			</td>
-			<td title="Click link to download Document"><a
+			<td title="Click link to download Document"><a id="${item.metadataId}"
 				href="<s:url value="/download/${item.metadataId}"/>">${item.documentFileName}</a></td>
 			<td width="125"><fmt:formatDate value="${item.createdDate}" /></td>
 			<td width="125"><c:if test="${updatedDate eq null}">
@@ -100,6 +121,10 @@ function confirmDelete(id){
 			</td>
 		</tr>
 	</c:forEach>
+	
+	<c:out value="${requestScope.lst}" />
+	<c:set var="lst" value="lst" scope="request" />
+
 </table>
 </body>
 </html>
