@@ -69,11 +69,38 @@ public class DocumentDaoImpl implements DocumentDao {
 		Criteria crit = session.createCriteria(Metadata.class);
 		crit.add(Restrictions.disjunction().add(
 				Restrictions.ilike("documentFileName", searchQuery,
-						MatchMode.ANYWHERE)).add(
-				Restrictions.ilike("keywords", searchQuery,MatchMode.ANYWHERE)));
+						MatchMode.ANYWHERE))
+				.add(
+						Restrictions.ilike("keywords", searchQuery,
+								MatchMode.ANYWHERE)).add(
+						Restrictions.ilike("createUser", searchQuery,
+								MatchMode.ANYWHERE)).add(
+						Restrictions.ilike("updatedUser", searchQuery,
+								MatchMode.ANYWHERE)).add(
+						Restrictions.ilike("subject", searchQuery,
+								MatchMode.ANYWHERE)).add(
+						Restrictions.ilike("comments", searchQuery,
+								MatchMode.ANYWHERE)));
 		crit.setMaxResults(100);
 		crit.addOrder(Order.desc("createdDate"));
 		List<Metadata> lst = crit.list();
+		int len = lst.size();
+		log.info(":::: Search returned " + len + " items.");
 		return lst;
+	}
+
+	/**
+	 * Deletes a document 
+	 */
+
+	@Override
+	public void deleteDocument(Long documentId) {
+		Session session = sessionFactory.openSession();
+		session.beginTransaction();
+		Metadata meta = (Metadata) session.get(Metadata.class, documentId);
+		session.delete(meta);
+		log.info("Is transaction active? = "+session.getTransaction().isActive());
+		session.getTransaction().commit();
+		log.info("document Deleted.<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 	}
 }
