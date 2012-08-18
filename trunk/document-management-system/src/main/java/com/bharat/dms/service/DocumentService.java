@@ -70,6 +70,7 @@ public class DocumentService {
 		return lst;
 	}
 	
+	@Transactional
 	public Metadata getDocumentById(Long docId){
 		Metadata meta = new Metadata(); 
 		
@@ -78,11 +79,17 @@ public class DocumentService {
 		return meta;
 	}
 	
-	
+	@Transactional
 	public List<Metadata> getDocumentsBySearchQuery(String searchQuery) {
 		List<Metadata> lst = new ArrayList<Metadata>();
 		
 		lst = documentDao.getDocumentsBySearchQuery(searchQuery);
 		return lst;
+	}
+	
+	@Transactional
+	public void deleteDocument(Long documentId){
+		log.info("Inside service delete method.<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+		documentDao.deleteDocument(documentId);
 	}
 }

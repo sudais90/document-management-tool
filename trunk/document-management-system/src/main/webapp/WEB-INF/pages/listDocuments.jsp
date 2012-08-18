@@ -13,38 +13,17 @@
 <%@page import="javax.servlet.jsp.jstl.core.LoopTagSupport"%><html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<SCRIPT type="text/javascript">
-function confirmDelete(id){
-	var action = confirm("Do you really want to delete "+ document.getElementById(id).innerHTML +" ?");
 
-	var url = '<s:url value="/docs/delete"/>';
-	if(action)
-	{
-		var method = method || "post";
-		var form = document.createElement("form");
-		form.setAttribute("method", method);
-		form.setAttribute("action", url);
-		// alert("3333333");
-		
-		var c = document.createElement("input");
-		c.type = "text";
-		c.setAttribute("name", "id");
-		c.setAttribute("value", id);
-		form.appendChild(c);
-		// alert("22222222");
-
-		document.body.appendChild(form);
-	    form.submit();
-	    // alert("111111");
- 	}
-}
-
-</SCRIPT>
 </head>
 <body>
+<%--
 <div class="message">${msg}</div>
+ --%>
+<c:if test="${mgs ne '' and msg ne null}">
+	<h3>${msg}</h3>
+</c:if>
 <br />
-<table style="width: 100%; font-size: 12px;" border="0">
+<table style="width: 100%; font-size: 12px;" border="0" id="searchTbl">
 	<tr style="font-weight: bold;">
 		<td width="25">Sr.No.</td>
 		<td width="25">&nbsp;</td>
@@ -107,24 +86,22 @@ function confirmDelete(id){
 				style="width: 25px; height: 25px; float: left; margin-right: 10px;"><img
 				src="${icon}" /></div>
 			</td>
-			<td title="Click link to download Document"><a id="${item.metadataId}"
+			<td title="Click link to download Document"><a
+				id="${item.metadataId}"
 				href="<s:url value="/download/${item.metadataId}"/>">${item.documentFileName}</a></td>
 			<td width="125"><fmt:formatDate value="${item.createdDate}" /></td>
 			<td width="125"><c:if test="${updatedDate eq null}">
 					Not Updated Yet
 				</c:if></td>
 			<td width="100">${item.documentSize}&nbsp;Bytes</td>
-			<td width="20">
-			<div onclick="confirmDelete(${item.metadataId});"
-				style="width: 24px; height: 24px; background-image: url('./assets/images/delete-icon.png')">
-			</div>
-			</td>
+			<td width="20"><a
+				href="javascript:deleteDocument('<s:url value="/docs/delete"/>?id=${item.metadataId}');">
+			<img src="<s:url value="/assets/images/delete-icon.png"/>"
+				style="width: 24px; height: 24px;" /></a></td>
 		</tr>
 	</c:forEach>
-	
-	<c:out value="${requestScope.lst}" />
-	<c:set var="lst" value="lst" scope="request" />
 
 </table>
+
 </body>
 </html>

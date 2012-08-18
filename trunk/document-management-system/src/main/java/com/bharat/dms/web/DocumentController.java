@@ -1,7 +1,9 @@
 package com.bharat.dms.web;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.ServletOutputStream;
@@ -11,10 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bharat.dms.domain.Metadata;
@@ -78,16 +82,20 @@ public class DocumentController {
 		}
 	}
 
-	@RequestMapping(value="/docs/delete", method = RequestMethod.POST)
-	public ModelAndView deleteDocument(@RequestParam("id")Long id, HttpServletRequest request){
+	@RequestMapping(value="/docs/delete", method = RequestMethod.GET)
+	public ModelAndView deleteDocument(@RequestParam("id")Long id, 
+			HttpServletRequest request,
+			HttpServletResponse response, ModelMap modelMap){
 		log.info("::::: " + id);
+		log.info("::::: url : "+request.getRequestURI());
 		
-		log.info(request.getAttribute("lst"));
+		documentService.deleteDocument(id);		
 		ModelAndView mav = new ModelAndView();
-		List<Metadata> lst = documentService.getDocumentsBySearchQuery("bha");
-		mav.addObject("lst", lst);
-		mav.setViewName("listDocs");
+		mav.setViewName("redirect:/docs");
+
 		return mav;
+
+		
 	}
 	
 }

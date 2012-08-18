@@ -7,12 +7,13 @@
 	<version>1.0.0-SNAPSHOT</version>
 	<name>document-management-system Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-	
+
 	<properties>
 		<spring.version>3.1.0.RELEASE</spring.version>
+		<spring.js.version>2.3.1.RELEASE</spring.js.version>
 		<hibernate.version></hibernate.version>
 	</properties>
-	
+
 	<dependencies>
 
 		<!-- SPRING DEPENDENCIES -->
@@ -90,6 +91,19 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring.version}</version>
 			<!-- <scope>compile</scope> -->
+		</dependency>
+
+		<!--	spring web flow jars for ajax support in tiles	-->
+		<dependency>
+			<groupId>org.springframework.webflow</groupId>
+			<artifactId>spring-js</artifactId>
+			<version>${spring.js.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.webflow</groupId>
+			<artifactId>spring-js-resources</artifactId>
+			<version>${spring.js.version}</version>
 		</dependency>
 
 		<!-- Spring Security -->

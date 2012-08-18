@@ -14,4 +14,6 @@ public interface DocumentDao {
 	public Metadata getDocumentById(Long docId);
 	
 	public List<Metadata> getDocumentsBySearchQuery(String searchQuery);
+	
+	public void deleteDocument(Long documentId);
 }

@@ -41,4 +41,8 @@
 		<put-attribute name="content" value="/WEB-INF/pages/disclaimer.jsp" />
 	</definition>
 
+	<definition name="errorView" extends="template">
+		<put-attribute name="title" value="Error!" />
+		<put-attribute name="content" value="/WEB-INF/pages/errorPage.jsp" />
+	</definition>
 </tiles-definitions>

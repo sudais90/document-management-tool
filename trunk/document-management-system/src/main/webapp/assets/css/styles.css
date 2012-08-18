@@ -64,7 +64,7 @@ BODY {
 	font-size: 12px;
 }
 
-TABLE,TR,TD {
+TABLE,TR,TD,H6,H5,H4,H3,H2,H1,A {
 	font-family: verdana, arial, sans-serif;
 	font-size: 12px;
 }
@@ -72,6 +72,12 @@ TABLE,TR,TD {
 FORM INPUT,TEXTAREA {
 	width: 423px;
 }
+
+H3{
+	background-color: #FFB8A6;
+	color: #000000;
+	padding: 5px 5px 5px 5px;	
+}	
 
 .message {
 	padding-top: 15px;

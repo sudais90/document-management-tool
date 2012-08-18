@@ -7,15 +7,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
 </head>
 <body>
-<form method="GET" action="search">
+<s:url value="/search" var="searchActionUrl" />
+<form method="GET" action="${searchActionUrl}">
 <table style="width: 550px; height: 38px; float: right" border="0"
 	bordercolor="white">
 	<tr>
 		<td>Search</td>
-		<td><input type="text" name="q" style="width: 420px;"/></td>
-		<td><input type="submit" value="search" style="width:100px;"></td>
+		<td><input type="text"  id="q" name="q" style="width: 420px;" value="${q}"/></td>
+		<td><input type="submit" value="search" style="width:100px;" /></td>
 	</tr>
 </table>
 </form>
