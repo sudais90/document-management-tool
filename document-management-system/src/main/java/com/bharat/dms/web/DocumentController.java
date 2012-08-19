@@ -37,10 +37,10 @@ public class DocumentController {
 	}
 
 	/**
-	 * prepares document post form 
+	 * Lists most recent documents 
 	 * @return
 	 */
-	@RequestMapping(value = "/docs", method = RequestMethod.GET)
+	@RequestMapping(value = "/docs", method ={ RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView listDocuments() {
 		String msg = "Recent Documents";
 

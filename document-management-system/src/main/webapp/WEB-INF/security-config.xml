@@ -19,13 +19,13 @@
 	<!-- http -->
 	<security:http auto-config="true" use-expressions="true">
 		
-		<security:intercept-url pattern="/**"
-				access="permitAll" requires-channel="http" />
-
-
 <!--		<security:intercept-url pattern="/**"-->
-<!--			access="hasAnyRole('ROLE_COMPANY','ROLE_ADMIN', 'ROLE_USER')"-->
-<!--			requires-channel="any" />-->
+<!--				access="permitAll" requires-channel="http" />-->
+
+
+		<security:intercept-url pattern="/**"
+			access="hasAnyRole('ROLE_SUPER_ADMIN','ROLE_ADMIN', 'ROLE_USER')"
+			requires-channel="any" />
 		
 		<!--
 
@@ -35,20 +35,22 @@
 			default-target-url="/js/reg" />
 		-->
 
-		<security:form-login login-page='/home'
+		<security:form-login login-page='/'
 			login-processing-url="/j_spring_security_check"
+			authentication-failure-url="/home?login_error=t"
+			default-target-url="/" 
 			authentication-success-handler-ref="loginController"
 			authentication-failure-handler-ref="loginController"
 		/>
 
 		<security:session-management
-			invalid-session-url="/home" />
+			invalid-session-url="/" />
 		<!-- on logout delete cookies -->
 		<security:logout delete-cookies="JSESSIONID"
-			invalidate-session="true" logout-url="/home" />
+			invalidate-session="true" logout-url="/j_spring_security_logout" />
 
 		<security:access-denied-handler
-			error-page="/home" />
+			error-page="/" />
 	</security:http>
 
 	<security:authentication-manager>

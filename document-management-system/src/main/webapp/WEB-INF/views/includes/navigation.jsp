@@ -11,18 +11,17 @@
 <html>
 <head>
 <style type="text/css">
-
 .leftNavTabs {
 	width: 100%;
 	font-size: 12px;
 	color: #FFFFFF;
 }
 
-.leftNavTabs td a{
+.leftNavTabs td a {
 	width: 100%;
 	font-size: 12px;
 	display: block;
-	color:white;
+	color: white;
 	background-color: grey;
 	height: 20px;
 	text-align: left;
@@ -30,16 +29,15 @@
 	text-decoration: none;
 }
 
-.leftNavTabs td a:HOVER{
+.leftNavTabs td a:HOVER {
 	color: white;
 }
-
 </style>
 
 </head>
 <body>
-
-<table class="leftNavTabs" border="1" >
+<security:authorize access="hasAnyRole('ROLE_USER','ROLE_ADMIN','ROLE_SUPER_ADMIN')">
+<table class="leftNavTabs" border="1">
 	<tr>
 		<td><s:url value="/upload" var="newdoc" /> <a href="${newdoc}">Upload
 		New Document</a></td>
@@ -47,10 +45,12 @@
 	<tr>
 		<td><s:url value="/docs" var="listdocs" /> <a href="${listdocs}">Documents</a></td>
 	</tr>
-	<tr>
-		<td></td>
-	</tr>
+	<security:authorize access="hasAnyRole('ROLE_ADMIN')">
+		<tr>
+			<td>Visible to Admin only</td>
+		</tr>
+	</security:authorize>
 </table>
-
+</security:authorize>
 </body>
 </html>

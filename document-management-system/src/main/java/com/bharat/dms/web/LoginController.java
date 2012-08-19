@@ -26,8 +26,17 @@ public class LoginController implements AuthenticationSuccessHandler,
 	public LoginController() {
 	}
 
-	@RequestMapping(value = {"/","/home"}, method = RequestMethod.GET)
+	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
 	public ModelAndView prepareLoginPage() {
+		log.info("Entering prepareLoginPage method");
+		ModelAndView mav = new ModelAndView();
+
+		mav.setViewName("login");
+		return mav;
+	}
+	
+	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.POST)
+	public ModelAndView preparePostRequestForLoginPage() {
 		log.info("Entering prepareLoginPage method");
 		ModelAndView mav = new ModelAndView();
 
@@ -36,23 +45,32 @@ public class LoginController implements AuthenticationSuccessHandler,
 	}
 
 	@Override
-	public void onAuthenticationSuccess(HttpServletRequest arg0,
-			HttpServletResponse arg1, Authentication arg2) throws IOException,
+	public void onAuthenticationSuccess(HttpServletRequest request,
+			HttpServletResponse response, Authentication arg2) throws IOException,
 			ServletException {
-		// TODO Auto-generated method stub
-
+		msgPrinter("Authentication Successful");
+		request.getRequestDispatcher("/docs").forward(request, response);
 	}
 
 	@Override
-	public void onAuthenticationFailure(HttpServletRequest arg0,
-			HttpServletResponse arg1, AuthenticationException arg2)
+	public void onAuthenticationFailure(HttpServletRequest request,
+			HttpServletResponse response, AuthenticationException arg2)
 			throws IOException, ServletException {
-		// TODO Auto-generated method stub
-
+		msgPrinter("Authentication Failed");
+		log.info(request.getContextPath());
+		request.setAttribute("loginErr", "Incorrect Username or Password!");
+		request.getRequestDispatcher("/").forward(request, response);
 	}
-	
+
 	@RequestMapping(value = "/disclaimer")
-	public String showDisclaimer(){
+	public String showDisclaimer() {
 		return "disclaimer";
 	}
+
+	private void msgPrinter(String msg) {
+		log.info("*******************************************");
+		log.info("*** " + msg);
+		log.info("*******************************************");
+	}
+
 }
