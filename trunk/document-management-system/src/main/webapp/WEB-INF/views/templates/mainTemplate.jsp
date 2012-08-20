@@ -38,5 +38,6 @@
 			<t:insertAttribute name="footer" />
 		</div>
 	</div>
+	<jsp:include page="/WEB-INF/pages/printSessionVars.jsp"></jsp:include>
 </body>
 </html>

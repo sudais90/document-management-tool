@@ -11,7 +11,9 @@
 			src="${dmslogo}" alt="DOCUMENT MANAGEMENT SYSTEM" width="300"
 			height="100" /></td>
 		<td>&nbsp;</td>
-		<td><s:url value="/j_spring_security_logout" var="logoutUrl" />
+		<td>
+			${sessionScope.user}
+		<s:url value="/j_spring_security_logout" var="logoutUrl" />
 		<a href="${logoutUrl}" style="color:#FFFFFF;">Logout</a></td>
 	</tr>
 

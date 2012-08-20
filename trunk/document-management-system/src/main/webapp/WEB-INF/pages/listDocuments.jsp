@@ -23,11 +23,17 @@
 	<h3>${msg}</h3>
 </c:if>
 <br />
+<table style="background-color: #FFB8A6; width: 100%;">
+	<tr>
+		<td>Total ${docCount} documents on this portal.</td>
+	</tr>
+</table>
 <table style="width: 100%; font-size: 12px;" border="0" id="searchTbl">
 	<tr style="font-weight: bold;">
 		<td width="25">Sr.No.</td>
 		<td width="25">&nbsp;</td>
 		<td>Document</td>
+		<td width="125">Owner</td>
 		<td width="125">Created Date</td>
 		<td width="125">Updated Date</td>
 		<td width="100">Size</td>
@@ -56,14 +62,16 @@
 			<c:when test="${item.documentType eq 'text/html'}">
 				<s:url value="/assets/images/ie-icon.png" var="icon" />
 			</c:when>
-			<c:when test="${item.documentType eq 'application/zip'}">
+			<c:when
+				test="${item.documentType eq 'application/zip' 
+			or item.documentType eq 'application/java-archive'}">
 				<s:url value="/assets/images/zip-icon.png" var="icon" />
 			</c:when>
 			<c:when test="${item.documentType eq 'application/octet-stream'}">
 				<s:url value="/assets/images/rar-icon.png" var="icon" />
 			</c:when>
 			<c:when
-				test="${item.documentType eq 'image/jpeg' 
+				test="${item.documentType eq 'image/jpeg'
 			or item.documentType eq 'image/gif'
 			or item.documentType eq 'image/png'}">
 				<s:url value="/assets/images/img-icon.png" var="icon" />
@@ -89,6 +97,7 @@
 			<td title="Click link to download Document"><a
 				id="${item.metadataId}"
 				href="<s:url value="/download/${item.metadataId}"/>">${item.documentFileName}</a></td>
+			<td width="125">${item.createUser}</td>
 			<td width="125"><fmt:formatDate value="${item.createdDate}" /></td>
 			<td width="125"><c:if test="${updatedDate eq null}">
 					Not Updated Yet
