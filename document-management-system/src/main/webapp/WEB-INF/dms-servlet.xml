@@ -56,6 +56,10 @@
 		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
 		<property name="exceptionMappings">
 			<props>
+				<prop
+					key="org.springframework.web.multipart.MaxUploadSizeExceededException">
+					errorView
+				</prop>
 				<prop key="java.lang.Throwable">
 					errorView
 				</prop>

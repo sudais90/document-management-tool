@@ -94,6 +94,7 @@
 		</dependency>
 
 		<!--	spring web flow jars for ajax support in tiles	-->
+		
 		<dependency>
 			<groupId>org.springframework.webflow</groupId>
 			<artifactId>spring-js</artifactId>
@@ -105,7 +106,7 @@
 			<artifactId>spring-js-resources</artifactId>
 			<version>${spring.js.version}</version>
 		</dependency>
-
+		
 		<!-- Spring Security -->
 		<dependency>
 			<groupId>org.springframework.security</groupId>
@@ -184,19 +185,25 @@
 		</dependency>
 
 		<!-- Freemarker -->
+		
+		<!-- 
 		<dependency>
 			<groupId>org.freemarker</groupId>
 			<artifactId>freemarker</artifactId>
 			<version>2.3.19</version>
 		</dependency>
-
+ 		-->
+		
 		<!-- Jackson JSON Mapper -->
+		
+		<!--
 		<dependency>
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>1.9.8</version>
 		</dependency>
-
+		-->
+		
 		<!-- jstl -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -314,6 +321,7 @@
 		</dependency>
 
 		<!--	Mail	-->
+		<!-- 
 		<dependency>
 			<groupId>javax.mail</groupId>
 			<artifactId>mail</artifactId>
@@ -324,7 +332,7 @@
 			<artifactId>activation</artifactId>
 			<version>1.1.1</version>
 		</dependency>
-
+ 		-->
 	</dependencies>
 
 	<build>

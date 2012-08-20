@@ -11,6 +11,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.WebAuthenticationDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -46,9 +47,22 @@ public class LoginController implements AuthenticationSuccessHandler,
 
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request,
-			HttpServletResponse response, Authentication arg2) throws IOException,
+			HttpServletResponse response, Authentication auth) throws IOException,
 			ServletException {
 		msgPrinter("Authentication Successful");
+        WebAuthenticationDetails details = (WebAuthenticationDetails) auth
+                        .getDetails();
+        log.info(details.getSessionId());
+        log.info("User Logged in from Remote Address : "
+                        + details.getRemoteAddress());
+        log.info(auth);
+        log.info("Credentials : " + auth.getCredentials());
+        log.info("Details : " + auth.getDetails());
+        log.info("Name : " + auth.getName());
+        log.info("Principal : " + auth.getPrincipal());
+        log.info("isAuthenticated : " + auth.isAuthenticated());
+        log.info("Authorities : " + auth.getAuthorities());
+        log.info("*******************************************");
 		request.getRequestDispatcher("/docs").forward(request, response);
 	}
 

@@ -73,6 +73,8 @@ TABLE,TR,TD,H6,H5,H4,H3,H2,H1,A {
 
 FORM INPUT,TEXTAREA {
 	width: 423px;
+	font-family: verdana, arial, sans-serif;
+	font-size: 12;
 }
 
 H3{
@@ -97,6 +99,7 @@ H3{
 	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
 	box-shadow: 0 1px 2px rgba(0,0,0,.2);
 }
+
 .loginTable{
 	width:400px;
 	background-color: #FFFFFF;

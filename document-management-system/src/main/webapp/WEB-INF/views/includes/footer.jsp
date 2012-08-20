@@ -10,13 +10,13 @@
 
 <div class="footer">
 <table
-	style="text-align: center; margin-left: auto; margin-right: auto;">
+	style="text-align: center; margin-left: auto; margin-right: auto; color:#FFFFFF;">
 	<tr>
-		<td>Developer:&nbsp; <a href="mailto:ibharatsharma@gmail.com">ibharatsharma@gmail.com</a>
+		<td>Developer:&nbsp; <a href="mailto:ibharatsharma@gmail.com" style="color:#FFFFFF;">ibharatsharma@gmail.com</a>
 		</td>
 	</tr>
 	<tr>
-		<td><a href="<s:url value="disclaimer"/>">Disclaimer
+		<td><a href="<s:url value="disclaimer"/>"  style="color:#FFFFFF;">Disclaimer
 		Agreement</a></td>
 	</tr>
 </table>

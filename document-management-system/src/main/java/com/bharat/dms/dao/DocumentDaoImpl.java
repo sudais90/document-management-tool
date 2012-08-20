@@ -1,6 +1,7 @@
 package com.bharat.dms.dao;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -9,11 +10,16 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.acls.domain.GrantedAuthoritySid;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.GrantedAuthorityImpl;
 
 import com.bharat.dms.domain.Document;
 import com.bharat.dms.domain.Metadata;
+import com.bharat.dms.utils.Constants;
 
 public class DocumentDaoImpl implements DocumentDao {
 
@@ -39,7 +45,8 @@ public class DocumentDaoImpl implements DocumentDao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Metadata> getDocuments(int count) {
+	public List<Metadata> getDocuments(int count, String username,
+			Collection<GrantedAuthority> roles) {
 
 		List<Metadata> lst = new ArrayList<Metadata>();
 
@@ -48,6 +55,17 @@ public class DocumentDaoImpl implements DocumentDao {
 		Criteria crit = session.createCriteria(Metadata.class);
 		crit.setMaxResults(count);
 		crit.addOrder(Order.desc("createdDate"));
+		
+		GrantedAuthority admin = new GrantedAuthorityImpl(Constants.ROLE_ADMIN);
+		GrantedAuthority superAdmin = new GrantedAuthorityImpl(Constants.ROLE_SUPER_ADMIN);
+		
+		if ((username != null && !username.trim().equals(""))
+				&& !(roles.contains(admin) || roles
+						.contains(superAdmin))) {
+
+			crit.add(Restrictions.ilike("createUser", username));
+		}
+
 		lst = (List<Metadata>) crit.list();
 		log.info("Leaving getDocuments method in DAO");
 		return lst;
@@ -90,7 +108,7 @@ public class DocumentDaoImpl implements DocumentDao {
 	}
 
 	/**
-	 * Deletes a document 
+	 * Deletes a document
 	 */
 
 	@Override
@@ -99,8 +117,19 @@ public class DocumentDaoImpl implements DocumentDao {
 		session.beginTransaction();
 		Metadata meta = (Metadata) session.get(Metadata.class, documentId);
 		session.delete(meta);
-		log.info("Is transaction active? = "+session.getTransaction().isActive());
+		log.info("Is transaction active? = "
+				+ session.getTransaction().isActive());
 		session.getTransaction().commit();
-		log.info("document Deleted.<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+		log
+				.info("document Deleted.<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+	}
+
+	@Override
+	public Long getAllDocumentCount() {
+		Session session = sessionFactory.openSession();
+		Long count = (Long) session.createCriteria(Metadata.class)
+				.setProjection(Projections.rowCount()).uniqueResult();
+
+		return count;
 	}
 }
