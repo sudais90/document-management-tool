@@ -14,6 +14,8 @@
 	<security:http pattern="/" security="none" />
 	<security:http pattern="/assets/**" security="none" />
 	<security:http pattern="/home*" security="none" />
+	<security:http pattern="/public/**" security="none" />
+	<security:http pattern="/user/reg" security="none" />
 
 
 	<!-- http -->

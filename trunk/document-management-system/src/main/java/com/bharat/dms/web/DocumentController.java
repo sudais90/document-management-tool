@@ -1,9 +1,8 @@
 package com.bharat.dms.web;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.ServletOutputStream;
@@ -12,19 +11,19 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bharat.dms.domain.Metadata;
 import com.bharat.dms.service.DocumentService;
+import com.bharat.dms.utils.Constants;
 
 @Controller
 public class DocumentController {
@@ -34,8 +33,15 @@ public class DocumentController {
 	@Autowired
 	private DocumentService documentService;
 
+	@Value("${doc.repo.path}")
+	private String fileStorePath;
+	
 	public void setDocumentService(DocumentService documentService) {
 		this.documentService = documentService;
+	}
+
+	public void setFileStorePath(String fileStorePath) {
+		this.fileStorePath = fileStorePath;
 	}
 
 	/**
@@ -46,7 +52,7 @@ public class DocumentController {
 	@RequestMapping(value = "/docs", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView listDocuments() {
 		String msg = "Recent Documents";
-		List<Metadata> lst = documentService.getRecentDocuments();
+		List<Metadata> lst = documentService.getUsersDocuments();
 		Long docCount = documentService.getAllDocumentCount();
 
 		ModelAndView mav = new ModelAndView();
@@ -77,7 +83,37 @@ public class DocumentController {
 
 		try {
 			ServletOutputStream out = response.getOutputStream();
-			out.write(meta.getDocument().getDocument());
+			StringBuilder fullPath = new StringBuilder();
+			fullPath.append(fileStorePath + File.separatorChar);
+			if(meta.getOwner().equals(Constants.DOC_TYPE_PUBLIC))
+			{
+				fullPath.append(Constants.PUBLIC_FOLDER);
+			}else{
+				fullPath.append(meta.getOwner());
+			}
+			fullPath.append(File.separatorChar+meta.getDocumentFileName());
+			log.info("Final document download path is : " + fullPath);
+			File f = new File(fullPath.toString());
+			if(f.isFile())
+			{
+				log.info("Document is a file ...");
+			}
+			try {
+				final int BUF_SIZE = 1024;
+				byte[] buffer = new byte[BUF_SIZE];
+				FileInputStream fis = new FileInputStream(f);
+				int count = 0;
+				do{
+					count = fis.read(buffer);
+					if(count == -1){
+						break;
+					}
+					out.write(buffer, 0, count);
+				}while(true);
+			} catch (IOException e) {
+				log.error(e.getMessage());
+				e.printStackTrace();
+			}
 			out.flush();
 			out.close();
 
@@ -98,7 +134,6 @@ public class DocumentController {
 		mav.setViewName("redirect:/docs");
 
 		return mav;
-
 	}
 
 	@RequestMapping(value = "/docs/count", method = RequestMethod.GET)
@@ -110,7 +145,5 @@ public class DocumentController {
 		mav.setViewName("redirect:/docs");
 
 		return mav;
-
 	}
-
 }

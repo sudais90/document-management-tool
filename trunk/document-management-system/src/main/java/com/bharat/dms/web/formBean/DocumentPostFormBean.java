@@ -1,17 +1,13 @@
 package com.bharat.dms.web.formBean;
 
-import java.util.Arrays;
-
-import com.bharat.dms.domain.Category;
-
 public class DocumentPostFormBean {
 
 	private String subject;
 	private Integer category;
 	private String keywords;
 	private String comments;
-	
-	
+	private boolean isPublic;
+
 	public DocumentPostFormBean() {
 	}
 
@@ -47,19 +43,19 @@ public class DocumentPostFormBean {
 		this.comments = comments;
 	}
 
-//	public byte[] getDocument() {
-//		return document;
-//	}
-//
-//	public void setDocument(byte[] document) {
-//		this.document = document;
-//	}
+	public boolean getIsPublic() {
+		return isPublic;
+	}
+	
+	public void setIsPublic(boolean isPublic) {
+		this.isPublic = isPublic;
+	}
 
 	@Override
 	public String toString() {
 		return "DocumentPostFormBean [category=" + category + ", comments="
-				+ comments + ", keywords=" + keywords + ", subject=" + subject + "]";
+				+ comments + ", isPublic=" + isPublic + ", keywords="
+				+ keywords + ", subject=" + subject + "]";
 	}
-	
-	
+
 }

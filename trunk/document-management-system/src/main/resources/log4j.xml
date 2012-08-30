@@ -20,7 +20,7 @@
 	
 		
 	<root>
-		<level value="DEBUG" />
+		<level value="INFO" />
 		<appender-ref ref="CA" />
 		<appender-ref ref="FA" />
 	</root>

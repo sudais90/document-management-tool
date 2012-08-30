@@ -19,6 +19,9 @@
 <%--
 <div class="message">${msg}</div>
  --%>
+ 
+<security:authentication property="principal.username" var="uName"/>
+ 
 <c:if test="${mgs ne '' and msg ne null}">
 	<h3>${msg}</h3>
 </c:if>
@@ -33,9 +36,10 @@
 		<td width="25">Sr.No.</td>
 		<td width="25">&nbsp;</td>
 		<td>Document</td>
-		<td width="125">Owner</td>
-		<td width="125">Created Date</td>
-		<td width="125">Updated Date</td>
+		<td width="120">Owner</td>
+		<td width="120">Uploaded by</td>
+		<td width="100">Created Date</td>
+		<td width="100">Updated Date</td>
 		<td width="100">Size</td>
 		<td width="20">&nbsp;</td>
 	</tr>
@@ -97,19 +101,36 @@
 			<td title="Click link to download Document"><a
 				id="${item.metadataId}"
 				href="<s:url value="/download/${item.metadataId}"/>">${item.documentFileName}</a></td>
-			<td width="125">${item.createUser}</td>
-			<td width="125"><fmt:formatDate value="${item.createdDate}" /></td>
-			<td width="125"><c:if test="${updatedDate eq null}">
-					Not Updated Yet
+			<td width="120">${item.owner}</td>
+			<td width="120">${item.createUser}</td>
+			<td width="100"><fmt:formatDate value="${item.createdDate}" /></td>
+			<td width="100"><c:if test="${updatedDate eq null}">
+					Not Updated
 				</c:if></td>
-			<td width="100">${item.documentSize}&nbsp;Bytes</td>
-			<td width="20"><a
-				href="javascript:deleteDocument('<s:url value="/docs/delete"/>?id=${item.metadataId}');">
-			<img src="<s:url value="/assets/images/delete-icon.png"/>"
-				style="width: 24px; height: 24px;" /></a></td>
+			<td width="100" >${item.documentSize}&nbsp;Bytes</td>
+			<td width="20">
+			
+			<%-- 
+			User should be able to see the delete link only if he is an admin or owner 
+			of the document. This will be helpful in case of public docs where 
+			user will not be able to delete public docs that he does not own.
+			--%>
+			<security:authorize  access="hasRole('ROLE_ADMIN')" var="userIsAdmin" />
+			
+			<c:choose>
+				<c:when test="${uName eq item.owner or userIsAdmin}">
+					<a href="javascript:deleteDocument('<s:url value="/docs/delete"/>?id=${item.metadataId}');">
+					<img src="<s:url value="/assets/images/delete-icon.png"/>"
+						style="width: 24px; height: 24px;" /></a>
+				</c:when>
+				<c:otherwise>
+					<img src="<s:url value="/assets/images/delete-icon-grey.png"/>"
+						style="width: 24px; height: 24px;" alt="No Permissions" title="No Permissions"/>
+				</c:otherwise>
+			</c:choose>
+			</td>
 		</tr>
 	</c:forEach>
-
 </table>
 
 </body>
