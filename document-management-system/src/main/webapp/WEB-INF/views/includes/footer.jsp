@@ -16,7 +16,7 @@
 		</td>
 	</tr>
 	<tr>
-		<td><a href="<s:url value="disclaimer"/>"  style="color:#FFFFFF;">Disclaimer
+		<td><a href="<s:url value="/public/disclaimer"/>"  style="color:#FFFFFF;">Disclaimer
 		Agreement</a></td>
 	</tr>
 </table>

@@ -2,13 +2,10 @@ package com.bharat.dms.domain;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -21,7 +18,6 @@ public class Metadata {
 	private String createUser;
 	private String updatedUser;
 	private String subject;
-	private Category category;
 	private String keywords;
 	private String comments;
 	private String documentFileName;
@@ -29,8 +25,8 @@ public class Metadata {
 	private Date updatedDate;
 	private String documentType;
 	private Long documentSize;
-	private Document document;
-
+	private String owner;
+	
 	public Metadata() {
 	}
 
@@ -70,16 +66,6 @@ public class Metadata {
 
 	public void setSubject(String subject) {
 		this.subject = subject;
-	}
-
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "CATEGORY_ID")
-	public Category getCategory() {
-		return category;
-	}
-
-	public void setCategory(Category category) {
-		this.category = category;
 	}
 
 	@Column(name = "KEYWORDS")
@@ -147,13 +133,13 @@ public class Metadata {
 		this.documentSize = documentSize;
 	}
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "DOCUMENT_ID")
-	public Document getDocument() {
-		return document;
+	@Column(name="OWNER", length=100, nullable = false)
+	public String getOwner() {
+		return owner;
 	}
 	
-	public void setDocument(Document document) {
-		this.document = document;
+	public void setOwner(String owner) {
+		this.owner = owner;
 	}
+
 }

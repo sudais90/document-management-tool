@@ -1,28 +1,45 @@
 package com.bharat.dms.web;
 
-import java.util.HashMap;
-import java.util.Map;
+import javax.validation.Valid;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bharat.dms.utils.Constants;
+import com.bharat.dms.web.formBean.UserRegFormBean;
 
 @Controller
 @RequestMapping("/user")
 public class UserAddEditFormController {
 
+	private final Logger log = Logger.getLogger(this.getClass());
+	
 	@RequestMapping(value="/reg", method = RequestMethod.GET)
 	public ModelAndView prepareUserRegForm(){
 		ModelAndView mav = new ModelAndView();
 		
-		Map<String, String> roleMap = new HashMap<String, String>();
-		roleMap.put("user", Constants.ROLE_USER);
-		roleMap.put("admin", Constants.ROLE_ADMIN);
-		roleMap.put("superAdmin", Constants.ROLE_SUPER_ADMIN);
-		mav.addObject("roles", roleMap);
+		UserRegFormBean formBean = new UserRegFormBean();
+		formBean.setRoles(new String[]{Constants.ROLE_USER});
+		mav.addObject("formBean", formBean);
+		
+		mav.setViewName("userAddEditForm");
+		return mav;
+	}
+	
+	@RequestMapping(value="/reg", method = RequestMethod.POST)
+	public ModelAndView processUserRegForm(@Valid UserRegFormBean formBean,
+			BindingResult bindingResult){
+		ModelAndView mav = new ModelAndView();
+		log.info(formBean);
+		
+		
+		//formBean.setRoles(new String[]{Constants.ROLE_USER});
+		mav.addObject("formBean", formBean);
+		
 		mav.setViewName("userAddEditForm");
 		return mav;
 	}

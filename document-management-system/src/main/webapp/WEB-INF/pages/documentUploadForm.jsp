@@ -40,6 +40,11 @@
 			<th><label for="document">Document:</label></th>
 			<td><input name="document" type="file" />
 		</tr>
+		<tr title="If Selected Document will be stored in a public area and will be accessable to all.">
+			<th><label for="isPublic">Public:</label></th>
+			<td><sf:checkbox  path="isPublic" cssStyle="width:12px;"/><span style="font-size:9px; padding-left:20px;color:red;">Caution: Public documents are visible to all</span>
+			</td>
+		</tr>
 		<tr>
 			<th>&nbsp;</th>
 			<td><input name="commit" type="submit"
