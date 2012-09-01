@@ -63,7 +63,8 @@ public class LoginController implements AuthenticationSuccessHandler,
         log.info("isAuthenticated : " + auth.isAuthenticated());
         log.info("Authorities : " + auth.getAuthorities());
         log.info("*******************************************");
-		request.getRequestDispatcher("/docs").forward(request, response);
+		//request.getRequestDispatcher("/docs").forward(request, response);
+		response.sendRedirect("docs");
 	}
 
 	@Override

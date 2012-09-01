@@ -13,26 +13,31 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 </head>
 <body>
+
 <sf:form method="POST" modelAttribute="formBean">
-	<fieldset title="Document Upload">
-	<table cellspacing="0" align="left" style="text-align: left;"
-		border="0">
+	
+	<fieldset title="Document Upload"><legend>Register new User</legend>
+	
+	<table cellspacing="5" align="left" style="text-align: left;" border="0">
 		<tr>
 			<th><label for="username">Username:</label></th>
 			<td><sf:input path="username" size="15" id="username"
 				maxlength="15" cssStyle="width:150px;" /></td>
+			<td><sf:errors path="username" cssStyle="color:red;" /></td>	
 		</tr>
 		<tr title="Password">
 			<th><label for="password">Password:</label></th>
 			<td><sf:password path="password" size="15" id="password"
 				maxlength="15" cssStyle="width:150px;" /></td>
+			<td><sf:errors path="password" cssStyle="color:red;" /></td>
 		</tr>
 		<tr title="Re-enter Password">
 			<th><label for="rePassword">Confirm Password:</label></th>
 			<td><sf:password path="rePassword" size="15" id="rePassword"
 				maxlength="15" cssStyle="width:150px;" /></td>
+			<td><sf:errors path="rePassword" cssStyle="color:red;" /></td>	
 		</tr>
-		<tr title="Press CTRL + Click to select multiple roles">
+		<tr title="">
 			<th><label for="roles">Roles:</label></th>
 			<td>
 			<table>

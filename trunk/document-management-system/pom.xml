@@ -4,7 +4,7 @@
 	<groupId>com.bharat.dms</groupId>
 	<artifactId>document-management-system</artifactId>
 	<packaging>war</packaging>
-	<version>1.0.1-SNAPSHOT</version>
+	<version>1.0.2-SNAPSHOT</version>
 	<name>document-management-system Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 
