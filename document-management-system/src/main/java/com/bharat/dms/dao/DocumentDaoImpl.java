@@ -67,7 +67,7 @@ public class DocumentDaoImpl implements DocumentDao {
 		Session session = sessionFactory.openSession();
 		Criteria crit = session.createCriteria(Metadata.class);
 		crit.setMaxResults(count);
-		crit.addOrder(Order.desc("createdDate"));
+		crit.addOrder(Order.desc("createdDate").asc("owner"));
 
 		GrantedAuthority admin = new GrantedAuthorityImpl(Constants.ROLE_ADMIN);
 		GrantedAuthority superAdmin = new GrantedAuthorityImpl(

@@ -2,6 +2,9 @@ package com.bharat.dms.web.formBean;
 
 import java.util.Arrays;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class UserRegFormBean {
 
 	public String username;
@@ -13,6 +16,8 @@ public class UserRegFormBean {
 	public UserRegFormBean() {
 	}
 
+	@NotNull
+	@Size(min=6, message="Username should be atleast 6 digit long")
 	public String getUsername() {
 		return username;
 	}
@@ -21,6 +26,8 @@ public class UserRegFormBean {
 		this.username = username;
 	}
 
+	@NotNull
+	@Size(min=6, message="Password should be atleast 6 digit long")
 	public String getPassword() {
 		return password;
 	}
@@ -29,6 +36,8 @@ public class UserRegFormBean {
 		this.password = password;
 	}
 
+	@NotNull
+	@Size(min=6, message="Password should be atleast 6 digit long" )
 	public String getRePassword() {
 		return rePassword;
 	}

@@ -11,10 +11,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<script type="text/javascript">
+ function setFocus(){
+	document.getElementById('username_or_email').focus();
+ }
+</script>
 </head>
-<body>
-<div>
+<body onload="setFocus()">
+<div style="text-align: center; vertical-align: center">
 <h2>Sign into Document Management System</h2>
 <p>Document Management System is a great place to store your
 important documents. It lets you Upload, Search and Download Documents.
@@ -58,8 +62,7 @@ important documents. It lets you Upload, Search and Download Documents.
 </table>
 </fieldset>
 </form>
-<script type="text/javascript">
-document.getElementById('username_or_email').focus();
-</script></div>
+
+</div>
 </body>
 </html>

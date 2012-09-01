@@ -15,6 +15,7 @@
 	width: 100%;
 	font-size: 12px;
 	color: #FFFFFF;
+	background-color: #321900;
 }
 
 .leftNavTabs td a {
@@ -37,27 +38,30 @@
 </head>
 <body>
 
-<table class="leftNavTabs" border="1">
+<table class="leftNavTabs" border="0">
+
 	<security:authorize
 		access="hasAnyRole('ROLE_USER','ROLE_ADMIN','ROLE_SUPER_ADMIN')">
-		<tr>
+		<tr height="20">
 			<td><s:url value="/upload" var="newdoc" /> <a href="${newdoc}">Upload
 			New Document</a></td>
 		</tr>
-		<tr>
+		<tr height="20">
 			<td><s:url value="/docs" var="listdocs" /> <a
 				href="${listdocs}">Documents</a></td>
 		</tr>
+
 	</security:authorize>
+
 	<security:authorize access="hasAnyRole('ROLE_ADMIN')">
+
 		<tr>
-			<td>Visible to Admin only</td>
+			<td><s:url value="/user/reg" var="regUser" /> <a
+				href="${regUser}">Register New User</a></td>
 		</tr>
+
 	</security:authorize>
-	<tr>
-		<td><s:url value="/user/reg" var="regUser" /> <a
-			href="${regUser}">Register New User</a></td>
-	</tr>
+
 </table>
 
 </body>

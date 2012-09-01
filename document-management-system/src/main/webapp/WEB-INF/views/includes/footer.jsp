@@ -8,9 +8,9 @@
 <%@ taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 
-<div class="footer">
+<div class="footer" style="text-align: center; vertical-align: center">
 <table
-	style="text-align: center; margin-left: auto; margin-right: auto; color:#FFFFFF;">
+	style="text-align: center; margin-left: auto; margin-right: auto; color:#FFFFFF; vertical-align: center">
 	<tr>
 		<td>Developer:&nbsp; <a href="mailto:ibharatsharma@gmail.com" style="color:#FFFFFF;">ibharatsharma@gmail.com</a>
 		</td>

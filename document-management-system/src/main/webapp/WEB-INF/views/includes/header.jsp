@@ -8,11 +8,20 @@
 
 <security:authentication property="principal.username" var="uName"/>
 
-<table border="0" style="width: 100%; color: #FFFFFF;">
+<table border="0" style="width: 100%; color: #FFFFFF; height:90px;">
 	<tr>
-		<td><s:url value="/assets/images/dms-logo.png" var="dmslogo" />
-		<img src="${dmslogo}" alt="DOCUMENT MANAGEMENT SYSTEM" width="300"
-			height="100" /></td>
+		<td>
+		
+			<s:url value="/assets/images/dms-logo.png" 
+				var="dmslogo" />
+			<s:url value="/docs" var="docsLink"/>	
+			<a href="${docsLink}" style="border: none;">
+			<img src="${dmslogo}" 
+				alt="DOCUMENT MANAGEMENT SYSTEM" 
+				width="300"
+				height="80" />
+			</a>
+		</td>
 		<td>&nbsp;</td>
 
 		<td width="150">
