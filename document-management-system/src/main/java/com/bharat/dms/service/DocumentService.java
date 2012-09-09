@@ -141,4 +141,8 @@ public class DocumentService {
 		}
 	}
 
+	public List<com.bharat.dms.domain.User> getAllUsers() {
+		return documentDao.getAllUsers();
+	}
+	
 }

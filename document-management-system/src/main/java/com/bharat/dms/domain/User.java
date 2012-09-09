@@ -76,7 +76,7 @@ public class User implements Serializable {
 		this.enabled = enabled;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name = "USER_ID")
 	public Set<UserRole> getUserRoles() {
 		return userRoles;

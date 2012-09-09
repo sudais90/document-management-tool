@@ -3,6 +3,7 @@ package com.bharat.dms.web;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.bharat.dms.service.DocumentService;
 import com.bharat.dms.utils.Constants;
 import com.bharat.dms.web.formBean.UserRegFormBean;
 
@@ -19,6 +21,12 @@ public class UserAddEditFormController {
 
 	private final Logger log = Logger.getLogger(this.getClass());
 
+	@Autowired
+	private DocumentService documentService;
+	
+	public void setDocumentService(DocumentService documentService) {
+		this.documentService = documentService;
+	}
 
 	@RequestMapping(value="/reg", method = RequestMethod.GET)
 	public ModelAndView prepareUserRegForm(){
@@ -27,7 +35,7 @@ public class UserAddEditFormController {
 		UserRegFormBean formBean = new UserRegFormBean();
 		formBean.setRoles(new String[]{Constants.ROLE_USER});
 		mav.addObject("formBean", formBean);
-		
+		mav.addObject("users", documentService.getAllUsers());
 		mav.setViewName("userAddEditForm");
 		return mav;
 	}
@@ -53,7 +61,7 @@ public class UserAddEditFormController {
 		
 		//formBean.setRoles(new String[]{Constants.ROLE_USER});
 		mav.addObject("formBean", formBean);
-		
+		mav.addObject("users", documentService.getAllUsers());
 		mav.setViewName("home");
 		return mav;
 	}
