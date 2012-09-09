@@ -15,15 +15,17 @@
 <body>
 
 <sf:form method="POST" modelAttribute="formBean">
-	
-	<fieldset title="Document Upload"><legend>Register new User</legend>
-	
-	<table cellspacing="5" align="left" style="text-align: left;" border="0">
+
+	<fieldset title="Document Upload"><legend>Register
+	new User</legend>
+
+	<table cellspacing="5" align="left" style="text-align: left;"
+		border="1">
 		<tr>
 			<th><label for="username">Username:</label></th>
 			<td><sf:input path="username" size="15" id="username"
 				maxlength="15" cssStyle="width:150px;" /></td>
-			<td><sf:errors path="username" cssStyle="color:red;" /></td>	
+			<td><sf:errors path="username" cssStyle="color:red;" /></td>
 		</tr>
 		<tr title="Password">
 			<th><label for="password">Password:</label></th>
@@ -35,7 +37,7 @@
 			<th><label for="rePassword">Confirm Password:</label></th>
 			<td><sf:password path="rePassword" size="15" id="rePassword"
 				maxlength="15" cssStyle="width:150px;" /></td>
-			<td><sf:errors path="rePassword" cssStyle="color:red;" /></td>	
+			<td><sf:errors path="rePassword" cssStyle="color:red;" /></td>
 		</tr>
 		<tr title="">
 			<th><label for="roles">Roles:</label></th>
@@ -79,6 +81,39 @@
 	</table>
 	</fieldset>
 </sf:form>
+<table width="500" border="0" >
+	<tr style="font-weight: bold; background-color: #321900; color: #FFFFFF;">
+		<td width="50">Sr.No.</td>
+		<td width="">User Name</td>
+		<td width="175">Roles</td>
+		<td width="75">Enabled</td>
+	</tr>
+	<c:forEach items="${users}" var="item" varStatus="status">
+		<c:choose>
+			<c:when test="${status.count mod 2 eq 0}">
+				<c:set var="rowcolor" value="even" />
+			</c:when>
+			<c:otherwise>
+			<c:set var="rowcolor" value="odd"/>
+			</c:otherwise>
+		</c:choose>
+		<tr class="${rowcolor}">
+			<td>${status.count}</td>
+			<td>${item.username}</td>
+			<td><c:forEach items="${item.userRoles}" var="role">
+				${role.authority}<br/>
+			</c:forEach></td>
+			<td><c:choose>
+				<c:when test="${item.enabled eq 1}">
+					YES
+				</c:when>
+				<c:otherwise>
+					NO
+				</c:otherwise>
+			</c:choose></td>
+		</tr>
+	</c:forEach>
+</table>
 
 </body>
 </html>

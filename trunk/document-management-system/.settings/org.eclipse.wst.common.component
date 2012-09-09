@@ -85,9 +85,6 @@
     <dependent-module archiveName="mysql-connector-java-5.1.9.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/mysql/mysql-connector-java/5.1.9/mysql-connector-java-5.1.9.jar">
       <dependency-type>uses</dependency-type>
     </dependent-module>
-    <dependent-module archiveName="servlet-api-6.0.35.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/apache/tomcat/servlet-api/6.0.35/servlet-api-6.0.35.jar">
-      <dependency-type>uses</dependency-type>
-    </dependent-module>
     <dependent-module archiveName="slf4j-api-1.6.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/slf4j/slf4j-api/1.6.2/slf4j-api-1.6.2.jar">
       <dependency-type>uses</dependency-type>
     </dependent-module>

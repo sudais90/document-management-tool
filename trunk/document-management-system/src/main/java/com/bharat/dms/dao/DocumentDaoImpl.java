@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.persistence.Query;
+
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -24,6 +26,7 @@ import org.springframework.security.core.authority.GrantedAuthorityImpl;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bharat.dms.domain.Metadata;
+import com.bharat.dms.domain.User;
 import com.bharat.dms.utils.Constants;
 import com.bharat.dms.utils.Utils;
 
@@ -208,5 +211,16 @@ public class DocumentDaoImpl implements DocumentDao {
 		log.info("Metadata saved with id : " + metadataId);
 		log.info("Leaving saveFileToRepo method in DAO");
 
+	}
+
+	@Override
+	public List<User> getAllUsers() {
+		Session session = sessionFactory.openSession();
+		
+		org.hibernate.Query query = (org.hibernate.Query) session.createQuery("from User");
+		
+		List<User> lst = query.list();
+		
+		return lst;
 	}
 }

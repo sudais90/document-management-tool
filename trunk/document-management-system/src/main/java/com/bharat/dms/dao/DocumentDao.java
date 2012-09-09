@@ -8,6 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.bharat.dms.domain.Metadata;
+import com.bharat.dms.domain.User;
 
 public interface DocumentDao {
 
@@ -22,4 +23,6 @@ public interface DocumentDao {
 	public Long getAllDocumentCount();
 	
 	public void saveFileToRepo(MultipartFile multipartFile, String fileStorePath, Metadata metadata) throws IOException;
+	
+	public List<User> getAllUsers();
 }
