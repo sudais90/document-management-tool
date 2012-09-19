@@ -51,7 +51,7 @@
 	background-color: #321900;
 }
 
-.page-footer .footer{
+.page-footer .footer {
 	background-color: #321900;
 	padding-left: 10px;
 	padding-top: 10px;
@@ -66,7 +66,6 @@ BODY {
 	font-size: 12px;
 }
 
-
 TABLE,TR,TD,H6,H5,H4,H3,H2,H1,A {
 	font-family: verdana, arial, sans-serif;
 	font-size: 12px;
@@ -78,35 +77,35 @@ FORM INPUT,TEXTAREA {
 	font-size: 12;
 }
 
-H3{
+H3 {
 	background-color: #FFB8A6;
 	color: #000000;
-	padding: 5px 5px 5px 5px;	
-}	
-
-a img {
-	border: none; 
+	padding: 5px 5px 5px 5px;
 }
 
-.button{
+a img {
+	border: none;
+}
+
+.button {
 	display: inline-block;
 	outline: none;
 	cursor: pointer;
 	text-align: center;
 	text-decoration: none;
-	font: 14px/100% Arial, Helvetica, sans-serif;
+	font: 14px/ 100% Arial, Helvetica, sans-serif;
 	padding: .5em 2em .55em;
-	text-shadow: 0 1px 1px rgba(0,0,0,.3);
-	-webkit-border-radius: .5em; 
+	text-shadow: 0 1px 1px rgba(0, 0, 0, .3);
+	-webkit-border-radius: .5em;
 	-moz-border-radius: .5em;
 	border-radius: .5em;
-	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
-	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
-	box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+	-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .2);
 }
 
-.loginTable{
-	width:400px;
+.loginTable {
+	width: 400px;
 	background-color: #FFFFFF;
 	margin-top: 100px;
 	margin-bottom: 150px;
@@ -114,8 +113,8 @@ a img {
 	margin-right: auto;
 }
 
-.loginTable INPUT{
-	width:200px;
+.loginTable INPUT {
+	width: 200px;
 	background-color: #FFFFFF;
 }
 
@@ -136,4 +135,19 @@ a img {
 
 .even {
 	background-color: #F2F2F2;
+}
+
+.error {
+	font: Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	font-weight: normal;
+	color: red;
+}
+
+#message {
+	width: 100%;
+	height: 50px;
+	background-color: #FFE6E6;
+	vertical-align: middle;
+	text-align: left;
 }

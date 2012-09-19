@@ -7,10 +7,10 @@ import javax.validation.constraints.Size;
 
 public class UserRegFormBean {
 
-	public String username;
-	public String password;
-	public String rePassword;
-	public String[] roles;
+	private String username;
+	private String password;
+	private String rePassword;
+	private String[] roles;
 	
 	
 	public UserRegFormBean() {
@@ -37,7 +37,7 @@ public class UserRegFormBean {
 	}
 
 	@NotNull
-	@Size(min=6, message="Password should be atleast 6 digit long" )
+	@Size(min=6, message="Re - Password should be atleast 6 digit long" )
 	public String getRePassword() {
 		return rePassword;
 	}
@@ -53,6 +53,7 @@ public class UserRegFormBean {
 	public void setRoles(String[] roles) {
 		this.roles = roles;
 	}
+	
 	@Override
 	public String toString() {
 		return "UserRegFormBean [password=" + password + ", rePassword="
