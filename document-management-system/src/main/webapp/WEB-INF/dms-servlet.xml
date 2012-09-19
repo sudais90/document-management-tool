@@ -9,7 +9,7 @@
         http://www.springframework.org/schema/mvc
 		http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
-	<context:property-placeholder location="classpath:placeholder.properties" />
+	<context:property-placeholder location="classpath:placeholder.properties, classpath:messages.properties" />
 
 	<bean
 		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
@@ -32,6 +32,13 @@
 		<property name="maxUploadSize" value="999999999" />
 		
 	</bean>
+
+	<!-- Application Message Bundle -->
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename" value="messages.properties" />
+        <property name="cacheSeconds" value="3000" />
+    </bean>
+
 
 	<!--
 		<bean

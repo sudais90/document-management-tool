@@ -15,33 +15,37 @@
 <body>
 
 <sf:form method="POST" modelAttribute="formBean">
-
-	<fieldset title="Document Upload"><legend>Register
+	<s:bind path="*">
+		<c:if test="${status.error}">
+			<div id="message" class="error">Form has errors</div>
+		</c:if>
+	</s:bind>
+	<fieldset title="Register new User"><legend>Register
 	new User</legend>
 
 	<table cellspacing="5" align="left" style="text-align: left;"
-		border="1">
+		border="0">
 		<tr>
 			<th><label for="username">Username:</label></th>
-			<td><sf:input path="username" size="15" id="username"
+			<td style="width:160px;"><sf:input path="username" size="15" id="username"
 				maxlength="15" cssStyle="width:150px;" /></td>
-			<td><sf:errors path="username" cssStyle="color:red;" /></td>
+			<td>&nbsp;<sf:errors path="username" cssStyle="color:red;" /></td>
 		</tr>
 		<tr title="Password">
 			<th><label for="password">Password:</label></th>
-			<td><sf:password path="password" size="15" id="password"
+			<td  style="width:160px;"><sf:password path="password" size="15" id="password"
 				maxlength="15" cssStyle="width:150px;" /></td>
-			<td><sf:errors path="password" cssStyle="color:red;" /></td>
+			<td>&nbsp;<sf:errors path="password" cssStyle="color:red;" /></td>
 		</tr>
 		<tr title="Re-enter Password">
 			<th><label for="rePassword">Confirm Password:</label></th>
-			<td><sf:password path="rePassword" size="15" id="rePassword"
+			<td  style="width:160px;"><sf:password path="rePassword" size="15" id="rePassword"
 				maxlength="15" cssStyle="width:150px;" /></td>
-			<td><sf:errors path="rePassword" cssStyle="color:red;" /></td>
+			<td>&nbsp;<sf:errors path="rePassword" cssStyle="color:red;" /></td>
 		</tr>
 		<tr title="">
 			<th><label for="roles">Roles:</label></th>
-			<td>
+			<td  style="width:160px;">
 			<table>
 				<%--
 				<tr>
@@ -56,28 +60,19 @@
 					<td>Admin Role:</td>
 					<td><sf:checkbox path="roles" id="roles" value="ROLE_ADMIN"
 						cssStyle="width:20px;" /></td>
-					<td style="font-size: 9">Admin Role should be granted with
-					Caution<br />
-					User with this role will have access to all the<br />
-					docuemnts.</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
 				</tr>
 			</table>
 			</td>
+			<td style="font-size: 9; color: red;">Admin Role should be granted with
+					Caution<br />
+					User with this role will have access to all the<br />
+					documents.</td>
 		</tr>
 		<tr>
 			<th>&nbsp;</th>
 			<td><input name="commit" type="submit" value="Register Me"
 				style="width: 125px;" /></td>
+			<td>&nbsp;</td>
 	</table>
 	</fieldset>
 </sf:form>
