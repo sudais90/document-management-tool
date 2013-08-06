@@ -12,19 +12,20 @@
 			/WEB-INF/dms-servlet.xml
 		</param-value>
 	</context-param>
+	
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
-	<listener>
-		<listener-class>
-			org.springframework.web.context.request.RequestContextListener</listener-class>
-	</listener>
+<!-- 	<listener> -->
+<!-- 		<listener-class> -->
+<!-- 			org.springframework.web.context.request.RequestContextListener</listener-class> -->
+<!-- 	</listener> -->
 
 	<!-- Log4j config listener -->
-	<listener>
-		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
-	</listener>
+<!-- 	<listener> -->
+<!-- 		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class> -->
+<!-- 	</listener> -->
 
 	<!-- Spring security filter -->
 
