@@ -9,7 +9,8 @@
         http://www.springframework.org/schema/mvc
 		http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
-	<context:property-placeholder location="classpath:placeholder.properties, classpath:messages.properties" />
+	<context:property-placeholder
+		location="classpath:placeholder.properties, classpath:messages.properties" />
 
 	<bean
 		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
@@ -30,26 +31,25 @@
 
 		<!-- one of the properties available; the maximum file size in bytes -->
 		<property name="maxUploadSize" value="999999999" />
-		
+
 	</bean>
 
 	<!-- Application Message Bundle -->
-    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-        <property name="basename" value="messages.properties" />
-        <property name="cacheSeconds" value="3000" />
-    </bean>
-
-
-	<!--
-		<bean
-		class="org.springframework.web.servlet.view.tiles2.TilesViewResolver"
-		/>
-	-->
-
-	<bean id="tilesViewResolver" class="org.springframework.js.ajax.AjaxUrlBasedViewResolver">
-		<property name="viewClass"
-			value="org.springframework.js.ajax.tiles2.AjaxTilesView" />
+	<bean id="messageSource"
+		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="messages.properties" />
+		<property name="cacheSeconds" value="3000" />
 	</bean>
+
+
+
+	<bean class="org.springframework.web.servlet.view.tiles2.TilesViewResolver" />
+
+
+	<!-- <bean id="tilesViewResolver" class="org.springframework.js.ajax.AjaxUrlBasedViewResolver"> -->
+	<!-- <property name="viewClass" -->
+	<!-- value="org.springframework.js.ajax.tiles2.AjaxTilesView" /> -->
+	<!-- </bean> -->
 
 	<bean class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
 		<property name="definitions">
